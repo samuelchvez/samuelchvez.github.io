@@ -48,6 +48,11 @@ ul li a:hover {
   transition: 0.15s;
 }
 
+::selection {
+  background-color: #ccc;
+  color: white;
+}
+
 .website {
   padding: 2rem 0;
 }
@@ -76,5 +81,10 @@ ul li a:hover {
 }
 
 .resources {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.contact {
   text-align: center;
 }
