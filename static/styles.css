@@ -4,7 +4,6 @@ html, body {
 
 body {
   background: #fcfcfc;
-  /*font-family: 'Literata', serif;*/
   font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -67,6 +66,10 @@ ul li a:hover {
   margin-bottom: 4rem;
   padding-top: 4rem;
   text-align: center;
+}
+
+.samuel-chavez img {
+  object-fit: cover;
 }
 
 .samuel-chavez img {
