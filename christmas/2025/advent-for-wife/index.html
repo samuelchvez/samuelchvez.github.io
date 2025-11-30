@@ -5,243 +5,280 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Advent Calendar for my Wife</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      :root {
-        --color-dark-red: #782e32;
-        --color-red: #a94637;
-        --color-green: #5c8e62;
-        --color-light-green: #9cb490;
-        --color-cream: #e2e3c6;
-        --color-brown: #926e4a;
-      }
-      
-      .door-disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        pointer-events: none;
-      }
-      
-      .door-enabled {
-        cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
-      }
-      
-      .door-enabled:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      }
-      
-      .door-enabled:active {
-        transform: scale(0.98);
-      }
-      
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(4px);
-      }
-      
-      .modal.active {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .modal-content {
-        background-color: var(--color-cream);
-        margin: 2rem;
-        padding: 1.5rem;
-        border-radius: 1rem;
-        max-width: 90vw;
-        max-height: 90vh;
-        overflow-y: auto;
-        position: relative;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      }
-      
-      .close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        font-size: 2rem;
-        font-weight: bold;
-        color: var(--color-dark-red);
-        cursor: pointer;
-        width: 2.5rem;
-        height: 2.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.8);
-        transition: background-color 0.2s;
-      }
-      
-      .close:hover {
-        background-color: rgba(255, 255, 255, 1);
-      }
-      
-      .modal-image {
-        width: 100%;
-        max-width: 500px;
-        height: auto;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
-      }
-      
-      .modal-link {
-        display: inline-block;
-        margin-top: 1rem;
-        padding: 0.75rem 1.5rem;
-        background-color: var(--color-red);
-        color: white;
-        text-decoration: none;
-        border-radius: 0.5rem;
-        font-weight: bold;
-        transition: background-color 0.2s;
-      }
-      
-      .modal-link:hover {
-        background-color: var(--color-dark-red);
-      }
-    </style>
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body class="bg-[#782e32] min-h-screen py-4 px-2">
     <div class="max-w-6xl mx-auto">
-      <h1 class="text-3xl md:text-4xl font-bold text-[#e2e3c6] text-center mb-6">
+      <h1
+        class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#e2e3c6] text-center mb-4 sm:mb-6"
+      >
         Advent Calendar 2025
       </h1>
-      
-      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
+
+      <div
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8"
+      >
         <!-- Days 1-24 -->
-        <div id="day-1" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #5c8e62, #9cb490);">
-          <span>1</span>
+        <div
+          id="day-1"
+          class="door h-60 sm:h-72 md:h-84 rounded-lg flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#5c8e62] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">1</span>
         </div>
-        <div id="day-2" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #a94637, #782e32);">
-          <span>2</span>
+        <div
+          id="day-2"
+          class="door h-60 sm:h-72 md:h-84 rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#a94637] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">2</span>
         </div>
-        <div id="day-3" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #9cb490, #5c8e62);">
-          <span>3</span>
+        <div
+          id="day-3"
+          class="door h-60 sm:h-72 md:h-84 rounded-md flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#9cb490] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">3</span>
         </div>
-        <div id="day-4" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #926e4a, #782e32);">
-          <span>4</span>
+        <div
+          id="day-4"
+          class="door h-60 sm:h-72 md:h-84 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#926e4a] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">4</span>
         </div>
-        <div id="day-5" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #782e32, #a94637);">
-          <span>5</span>
+        <div
+          id="day-5"
+          class="door h-60 sm:h-72 md:h-84 rounded-lg flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#782e32] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">5</span>
         </div>
-        <div id="day-6" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #5c8e62, #926e4a);">
-          <span>6</span>
+        <div
+          id="day-6"
+          class="door h-60 sm:h-72 md:h-84 rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#5c8e62] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">6</span>
         </div>
-        <div id="day-7" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #a94637, #926e4a);">
-          <span>7</span>
+        <div
+          id="day-7"
+          class="door h-60 sm:h-72 md:h-84 rounded-md flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#a94637] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">7</span>
         </div>
-        <div id="day-8" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #9cb490, #e2e3c6); color: #782e32;">
-          <span>8</span>
+        <div
+          id="day-8"
+          class="door h-60 sm:h-72 md:h-84 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold text-[#782e32] shadow-lg bg-[#e2e3c6] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">8</span>
         </div>
-        <div id="day-9" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #5c8e62, #9cb490);">
-          <span>9</span>
+        <div
+          id="day-9"
+          class="door h-60 sm:h-72 md:h-84 rounded-lg flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#9cb490] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">9</span>
         </div>
-        <div id="day-10" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #782e32, #926e4a);">
-          <span>10</span>
+        <div
+          id="day-10"
+          class="door h-60 sm:h-72 md:h-84 rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#926e4a] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">10</span>
         </div>
-        <div id="day-11" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #a94637, #782e32);">
-          <span>11</span>
+        <div
+          id="day-11"
+          class="door h-60 sm:h-72 md:h-84 rounded-md flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#782e32] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">11</span>
         </div>
-        <div id="day-12" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #9cb490, #5c8e62);">
-          <span>12</span>
+        <div
+          id="day-12"
+          class="door h-60 sm:h-72 md:h-84 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#5c8e62] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">12</span>
         </div>
-        <div id="day-13" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #926e4a, #9cb490);">
-          <span>13</span>
+        <div
+          id="day-13"
+          class="door h-60 sm:h-72 md:h-84 rounded-lg flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#a94637] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">13</span>
         </div>
-        <div id="day-14" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #5c8e62, #782e32);">
-          <span>14</span>
+        <div
+          id="day-14"
+          class="door h-60 sm:h-72 md:h-84 rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#9cb490] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">14</span>
         </div>
-        <div id="day-15" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #a94637, #5c8e62);">
-          <span>15</span>
+        <div
+          id="day-15"
+          class="door h-60 sm:h-72 md:h-84 rounded-md flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#926e4a] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">15</span>
         </div>
-        <div id="day-16" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #782e32, #9cb490);">
-          <span>16</span>
+        <div
+          id="day-16"
+          class="door h-60 sm:h-72 md:h-84 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#782e32] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">16</span>
         </div>
-        <div id="day-17" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #926e4a, #a94637);">
-          <span>17</span>
+        <div
+          id="day-17"
+          class="door h-60 sm:h-72 md:h-84 rounded-lg flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#5c8e62] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">17</span>
         </div>
-        <div id="day-18" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #9cb490, #782e32);">
-          <span>18</span>
+        <div
+          id="day-18"
+          class="door h-60 sm:h-72 md:h-84 rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#a94637] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">18</span>
         </div>
-        <div id="day-19" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #5c8e62, #a94637);">
-          <span>19</span>
+        <div
+          id="day-19"
+          class="door h-60 sm:h-72 md:h-84 rounded-md flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#9cb490] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">19</span>
         </div>
-        <div id="day-20" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #782e32, #5c8e62);">
-          <span>20</span>
+        <div
+          id="day-20"
+          class="door h-60 sm:h-72 md:h-84 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#926e4a] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">20</span>
         </div>
-        <div id="day-21" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #926e4a, #5c8e62);">
-          <span>21</span>
+        <div
+          id="day-21"
+          class="door h-60 sm:h-72 md:h-84 rounded-lg flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#782e32] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">21</span>
         </div>
-        <div id="day-22" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #a94637, #9cb490);">
-          <span>22</span>
+        <div
+          id="day-22"
+          class="door h-60 sm:h-72 md:h-84 rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#5c8e62] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">22</span>
         </div>
-        <div id="day-23" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #9cb490, #926e4a);">
-          <span>23</span>
+        <div
+          id="day-23"
+          class="door h-60 sm:h-72 md:h-84 rounded-md flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#a94637] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">23</span>
         </div>
-        <div id="day-24" class="door aspect-square rounded-lg flex items-center justify-center text-2xl font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #782e32, #926e4a);">
-          <span>24</span>
+        <div
+          id="day-24"
+          class="door h-60 sm:h-72 md:h-84 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold text-white shadow-lg bg-[#9cb490] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number">24</span>
         </div>
         <!-- Day 25 - Special -->
-        <div id="day-25" class="door col-span-3 sm:col-span-4 md:col-span-5 aspect-[3/1] md:aspect-[4/1] rounded-xl flex items-center justify-center text-3xl md:text-5xl font-bold text-white shadow-2xl relative overflow-hidden" style="background: linear-gradient(135deg, #a94637, #782e32, #5c8e62);">
-          <span class="relative z-10">🎄 Day 25 - Christmas! 🎄</span>
+        <div
+          id="day-25"
+          class="door col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5 aspect-[3/1] md:aspect-[4/1] rounded-2xl flex items-center justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white shadow-2xl relative overflow-hidden bg-gradient-to-r from-[#a94637] via-[#782e32] to-[#5c8e62] border-4 border-white border-opacity-20 border-dashed"
+        >
+          <span class="day-number relative z-10"
+            >🎄 Day 25 - Christmas! 🎄</span
+          >
           <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-2 left-2 text-2xl">❄️</div>
-            <div class="absolute top-4 right-4 text-xl">⭐</div>
-            <div class="absolute bottom-2 left-4 text-xl">🎁</div>
-            <div class="absolute bottom-4 right-2 text-2xl">✨</div>
+            <div class="absolute top-2 left-2 text-xl sm:text-2xl">❄️</div>
+            <div class="absolute top-4 right-4 text-lg sm:text-xl">⭐</div>
+            <div class="absolute bottom-2 left-4 text-lg sm:text-xl">🎁</div>
+            <div class="absolute bottom-4 right-2 text-xl sm:text-2xl">✨</div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Modal -->
-    <div id="modal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <div id="modal-body"></div>
+    <div
+      id="modal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm modal-backdrop"
+    >
+      <div
+        id="modal-content"
+        class="relative bg-[#e2e3c6] m-4 p-4 sm:p-6 rounded-xl max-w-[90vw] max-h-[90vh] overflow-y-auto shadow-2xl"
+      >
+        <button
+          id="close-modal"
+          class="absolute top-2 right-2 sm:top-4 sm:right-4 text-3xl sm:text-4xl font-bold text-[#782e32] hover:text-[#a94637] w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white bg-opacity-80 hover:bg-opacity-100 transition-all"
+        >
+          &times;
+        </button>
+        <div id="modal-body" class="mt-2"></div>
       </div>
     </div>
 
     <script>
       // Calendar data - each day has an image and an external link
       const calendarData = {
-        1: { image: 'images/day1.jpg', link: 'https://example.com/day1' },
-        2: { image: 'images/day2.jpg', link: 'https://example.com/day2' },
-        3: { image: 'images/day3.jpg', link: 'https://example.com/day3' },
-        4: { image: 'images/day4.jpg', link: 'https://example.com/day4' },
-        5: { image: 'images/day5.jpg', link: 'https://example.com/day5' },
-        6: { image: 'images/day6.jpg', link: 'https://example.com/day6' },
-        7: { image: 'images/day7.jpg', link: 'https://example.com/day7' },
-        8: { image: 'images/day8.jpg', link: 'https://example.com/day8' },
-        9: { image: 'images/day9.jpg', link: 'https://example.com/day9' },
-        10: { image: 'images/day10.jpg', link: 'https://example.com/day10' },
-        11: { image: 'images/day11.jpg', link: 'https://example.com/day11' },
-        12: { image: 'images/day12.jpg', link: 'https://example.com/day12' },
-        13: { image: 'images/day13.jpg', link: 'https://example.com/day13' },
-        14: { image: 'images/day14.jpg', link: 'https://example.com/day14' },
-        15: { image: 'images/day15.jpg', link: 'https://example.com/day15' },
-        16: { image: 'images/day16.jpg', link: 'https://example.com/day16' },
-        17: { image: 'images/day17.jpg', link: 'https://example.com/day17' },
-        18: { image: 'images/day18.jpg', link: 'https://example.com/day18' },
-        19: { image: 'images/day19.jpg', link: 'https://example.com/day19' },
-        20: { image: 'images/day20.jpg', link: 'https://example.com/day20' },
-        21: { image: 'images/day21.jpg', link: 'https://example.com/day21' },
-        22: { image: 'images/day22.jpg', link: 'https://example.com/day22' },
-        23: { image: 'images/day23.jpg', link: 'https://example.com/day23' },
-        24: { image: 'images/day24.jpg', link: 'https://example.com/day24' },
-        25: { image: 'images/day25.jpg', link: 'https://example.com/day25' }
+        1: {
+          image: "images/day1.png",
+          link: "https://samuelchavez.com/christmas/2025/advent-for-wife/day1.mp3",
+        },
+        2: { image: "images/day2.jpg", link: "https://example.com/day2" },
+        3: { image: "images/day3.jpg", link: "https://example.com/day3" },
+        4: { image: "images/day4.jpg", link: "https://example.com/day4" },
+        5: { image: "images/day5.jpg", link: "https://example.com/day5" },
+        6: { image: "images/day6.jpg", link: "https://example.com/day6" },
+        7: { image: "images/day7.jpg", link: "https://example.com/day7" },
+        8: { image: "images/day8.jpg", link: "https://example.com/day8" },
+        9: { image: "images/day9.jpg", link: "https://example.com/day9" },
+        10: { image: "images/day10.jpg", link: "https://example.com/day10" },
+        11: { image: "images/day11.jpg", link: "https://example.com/day11" },
+        12: { image: "images/day12.jpg", link: "https://example.com/day12" },
+        13: { image: "images/day13.jpg", link: "https://example.com/day13" },
+        14: { image: "images/day14.jpg", link: "https://example.com/day14" },
+        15: { image: "images/day15.jpg", link: "https://example.com/day15" },
+        16: { image: "images/day16.jpg", link: "https://example.com/day16" },
+        17: { image: "images/day17.jpg", link: "https://example.com/day17" },
+        18: { image: "images/day18.jpg", link: "https://example.com/day18" },
+        19: { image: "images/day19.jpg", link: "https://example.com/day19" },
+        20: { image: "images/day20.jpg", link: "https://example.com/day20" },
+        21: { image: "images/day21.jpg", link: "https://example.com/day21" },
+        22: { image: "images/day22.jpg", link: "https://example.com/day22" },
+        23: { image: "images/day23.jpg", link: "https://example.com/day23" },
+        24: { image: "images/day24.jpg", link: "https://example.com/day24" },
+        25: { image: "images/day25.jpg", link: "https://example.com/day25" },
       };
+
+      // Get clicked days from local storage
+      function getClickedDays() {
+        const clicked = localStorage.getItem("adventClickedDays");
+        return clicked ? JSON.parse(clicked) : [];
+      }
+
+      // Save clicked day to local storage
+      function markDayAsClicked(day) {
+        const clicked = getClickedDays();
+        if (!clicked.includes(day)) {
+          clicked.push(day);
+          localStorage.setItem("adventClickedDays", JSON.stringify(clicked));
+        }
+      }
+
+      // Check if a day has been clicked
+      function isDayClicked(day) {
+        return getClickedDays().includes(day);
+      }
+
+      // Update door appearance based on clicked state
+      function updateDoorAppearance(day) {
+        const doorElement = document.getElementById(`day-${day}`);
+        const dayNumber = doorElement.querySelector(".day-number");
+        const clicked = isDayClicked(day);
+
+        if (clicked) {
+          // Clicked: no border, dark background with inset shadow, hide number
+          doorElement.style.border = "none";
+          doorElement.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
+          doorElement.style.boxShadow = "inset 0 0 10px rgba(0, 0, 0, 0.2)";
+          if (dayNumber) {
+            dayNumber.style.display = "none";
+          }
+        } else {
+          // Not clicked: dashed border, show number, reset styles
+          doorElement.style.border = "";
+          doorElement.style.backgroundColor = "";
+          doorElement.style.boxShadow = "";
+          doorElement.classList.remove("border-solid");
+          doorElement.classList.add("border-dashed");
+          if (dayNumber) {
+            dayNumber.style.display = "";
+          }
+        }
+      }
 
       // Check if a day should be enabled
       function isDayEnabled(day) {
@@ -249,12 +286,12 @@
         const currentYear = today.getFullYear();
         const currentMonth = today.getMonth(); // 0-11, where 11 is December
         const currentDate = today.getDate();
-        
+
         // Only enable days in December 2025
-        if (currentYear !== 2025 || currentMonth !== 11) {
-          return false;
-        }
-        
+        //if (currentYear !== 2025 || currentMonth !== 11) {
+        //return false;
+        // }
+
         // Enable if current date is >= day number
         return currentDate >= day;
       }
@@ -263,51 +300,86 @@
       function initCalendar() {
         for (let day = 1; day <= 25; day++) {
           const doorElement = document.getElementById(`day-${day}`);
-          
+
+          // Update appearance based on clicked state
+          updateDoorAppearance(day);
+
           if (isDayEnabled(day)) {
-            doorElement.classList.add('door-enabled');
-            doorElement.addEventListener('click', () => openDay(day));
+            doorElement.classList.add("door-enabled");
+            doorElement.addEventListener("click", () => openDay(day));
           } else {
-            doorElement.classList.add('door-disabled');
+            doorElement.classList.add("door-disabled");
           }
         }
       }
 
       // Open day modal
       function openDay(day) {
+        // Mark day as clicked in local storage
+        markDayAsClicked(day);
+
+        // Update door appearance
+        updateDoorAppearance(day);
+
         const data = calendarData[day];
-        const modal = document.getElementById('modal');
-        const modalBody = document.getElementById('modal-body');
-        
+        const modal = document.getElementById("modal");
+        const modalContent = document.getElementById("modal-content");
+        const modalBody = document.getElementById("modal-body");
+
         modalBody.innerHTML = `
-          <h2 class="text-2xl font-bold mb-4" style="color: var(--color-dark-red);">Day ${day}</h2>
-          <img src="${data.image}" alt="Day ${day}" class="modal-image" onerror="this.src='https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=500&h=500&fit=crop'; this.onerror=null;">
-          <a href="${data.link}" target="_blank" rel="noopener noreferrer" class="modal-link">Open Special Link →</a>
+          <h2 class="text-xl sm:text-2xl font-bold mb-4 text-[#782e32]">Day ${day}</h2>
+          <img src="${data.image}" alt="Day ${day}" class="w-full max-w-md h-auto rounded-lg mb-4 shadow-lg" onerror="this.src='https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=500&h=500&fit=crop'; this.onerror=null;">
+          <a href="${data.link}" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-[#a94637] hover:bg-[#782e32] text-white font-bold rounded-lg transition-colors text-sm sm:text-base">
+            Open Special Link →
+          </a>
         `;
-        
-        modal.classList.add('active');
+
+        // Remove animation class first, then add it back to trigger animation
+        modalContent.classList.remove("modal-content-animate");
+        modal.classList.remove("hidden");
+
+        // Trigger animation on next frame
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            modalContent.classList.add("modal-content-animate");
+          });
+        });
+
+        document.body.style.overflow = "hidden";
       }
 
       // Close modal
       function closeModal() {
-        const modal = document.getElementById('modal');
-        modal.classList.remove('active');
+        const modal = document.getElementById("modal");
+        modal.classList.add("hidden");
+        document.body.style.overflow = "auto";
       }
 
       // Event listeners
-      document.querySelector('.close').addEventListener('click', closeModal);
-      document.getElementById('modal').addEventListener('click', function(e) {
+      document
+        .getElementById("close-modal")
+        .addEventListener("click", closeModal);
+      document.getElementById("modal").addEventListener("click", function (e) {
         if (e.target === this) {
           closeModal();
         }
       });
 
       // Close modal on Escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
           closeModal();
         }
       });
+
+      // Check for reset hash and clear local storage
+      if (window.location.hash === "#reset") {
+        localStorage.removeItem("adventClickedDays");
+        // Remove the hash from URL without reloading
+        history.replaceState(null, null, window.location.pathname);
+        // Reload to refresh the calendar state
+        window.location.reload();
+      }
 
       // Initialize on page load
       initCalendar();
