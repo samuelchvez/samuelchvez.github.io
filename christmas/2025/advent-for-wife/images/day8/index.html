@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 2.0" />
+        <title>Alesilla @ Navidad 2014</title>
+
+        <style>
+          body{
+            background: #ccc;
+            margin: 0;
+            padding: 0;
+          }
+
+          .world-wrapper{
+            height: 480px;
+            margin: auto;
+            position: relative;
+            width: 320px;
+          }
+
+          canvas{
+            background: url(static/images/base.png) no-repeat 17px 22px;
+            background-size: 287px auto;
+            cursor: pointer;
+            display: block;
+            width: 320px;
+            height: 480px;
+          }
+
+          .crystal{
+            background: url(static/images/crystal.png) no-repeat 17px 22px;
+            background-size: 287px auto;
+            cursor: pointer;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+          }
+
+          .plaque{
+            position: absolute;
+            width: 89px;
+            padding: 0 10px;
+            height: 11px;
+            top: 268px;
+            left: 104px;
+            text-align: center;
+            font-size: 7px;
+            font-family: 'Indie Flower', cursive;
+            text-shadow: 0 1px 0 #FFCD55;
+            color: #36250D;
+            font-weight: bold;
+          }
+        </style>
+
+        <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+
+        <span id="delta-time"></span>
+
+        <!-- Floater-->
+        <div class="world-wrapper">
+
+            <!-- Canvas -->
+            <canvas class="my-canvas" id="canvas" width="640" height="960"></canvas>
+
+            <!-- Crystal -->
+            <div class="crystal"></div>
+
+            <!-- Plaque -->
+            <div class="plaque">
+                Para Ale, con mucho cariño
+            </div>
+        </div>
+
+        <!-- Sources -->
+        <script src="static/scripts/jquery.js"></script>
+        <script src="static/scripts/shake.js"></script>
+        <script src="static/scripts/utilities.js"></script>
+        <script src="static/scripts/algebra_2D.js"></script>
+        <script src="static/scripts/animation_framework.js"></script>
+        <script src="static/scripts/snowball.js"></script>
+        <script src="static/scripts/simple_image.js"></script>
+        <script src="static/scripts/mask.js"></script>
+        <script src="static/scripts/main.js"></script>
+    </body>
+</html>
