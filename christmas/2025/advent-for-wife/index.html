@@ -306,6 +306,11 @@
 
       // Check if a day should be enabled
       function isDayEnabled(day) {
+        // Check for supreme leader hash - enables all days
+        if (window.location.hash === "#supreme-leader-142857") {
+          return true;
+        }
+
         const today = new Date();
         const currentYear = today.getFullYear();
         const currentMonth = today.getMonth(); // 0-11, where 11 is December
